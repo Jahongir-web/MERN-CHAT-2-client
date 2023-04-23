@@ -1,0 +1,45 @@
+
+.conversation {
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.conversation:hover {
+  box-shadow: 0 0 3px 6px #80808038;
+  cursor: pointer;
+}
+
+.conversation>div {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.online-dot {
+  background-color: rgb(79, 253, 26);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.status {
+  display: block;
+}
+
+hr {
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  
+}

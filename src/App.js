@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import { Auth } from './pages/Auth/Auth';
+import { Chat } from './pages/Chat/Chat';
+
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("profile")) || null);
+  
+  const handleLogin = (user) => {
+    setCurrentUser(user);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {currentUser ? (
+          <Chat currentUser={currentUser} setCurrentUser={setCurrentUser} />
+        ) : (
+          <Auth handleLogin={handleLogin} />
+        )
+      }
+
+      <div className='blur'></div>
+      <div className='blur'></div>
     </div>
   );
 }

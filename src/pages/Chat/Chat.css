@@ -1,0 +1,38 @@
+.Chat {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;  
+}
+
+.left-side {
+  width: 25%;
+  padding: 10px 20px;
+}
+
+.middle-box {
+  width: 50%;
+  border: 2px dashed blue;
+  border-top: 0;
+  border-bottom: 0;
+  padding: 10px 20px;
+}
+
+.right-side {
+  width: 25%;
+  padding: 10px 20px;
+}
+
+.right-side-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.right-side-top button {
+  align-self: flex-start;
+}
+
+.right-side-top h2 {
+  margin-top: 0;
+}

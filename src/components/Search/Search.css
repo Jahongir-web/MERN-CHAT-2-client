@@ -1,0 +1,33 @@
+.search-box {
+  display: flex;
+}
+
+.search-box img {
+  width: 40px;
+  height: 40px;
+}
+
+.search-input-box {
+  display: flex;
+  background-color: var(--inputColor);
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.search-input-box > input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: var(--buttonBg);
+  border-radius: 5px;
+  padding: 4px;
+  color: white;
+  cursor: pointer;
+}
