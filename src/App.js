@@ -3,21 +3,18 @@ import { useState } from 'react';
 import './App.css';
 import { Auth } from './pages/Auth/Auth';
 import { Chat } from './pages/Chat/Chat';
+import { useInfoContext } from './context/Context';
 
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("profile")) || null);
+  const {currentUser} = useInfoContext()
   
-  const handleLogin = (user) => {
-    setCurrentUser(user);
-  };
-
   return (
     <div className="App">
       {currentUser ? (
-          <Chat currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          <Chat/>
         ) : (
-          <Auth handleLogin={handleLogin} />
+          <Auth/>
         )
       }
 

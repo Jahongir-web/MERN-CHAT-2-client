@@ -1,0 +1,9 @@
+.user-info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.user-info-box button {
+  padding: 4px 10px;
+}

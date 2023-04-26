@@ -1,7 +1,28 @@
 import React from 'react'
 import profileImg from '../../img/defaultProfile.png'
 
-export const Users = ({users, onlineUsers, setModal, setUser}) => {
+import "./Users.css"
+import { findChat } from '../../api/ChatRequests'
+import { useInfoContext } from '../../context/Context'
+
+export const Users = ({users}) => {
+  const {onlineUsers, setModal, setUser, currentUser, exit, chats, setChats, setCurrentChat} = useInfoContext()
+  
+  const createChat = async (firstId, secondId) => {
+    try {
+      const {data} = await findChat(firstId, secondId)
+      setCurrentChat(data)
+      if(!chats.some(chat => chat._id === data._id)) {
+        setChats([...chats, data]);
+      }
+    } catch (error) {
+      console.log(error);
+      if(error.response.data.message === "jwt expired") {
+        exit()
+      }
+    }
+  }
+
   const online = (user) => {
     return onlineUsers.some(onlineUser => onlineUser.userId === user._id)
   }
@@ -18,8 +39,8 @@ export const Users = ({users, onlineUsers, setModal, setUser}) => {
         users.map((user) => {
           return (
             <div key={user._id}>
-              <div className='conversation' onClick={()=> openModal(user)}>
-                <div>
+              <div className='conversation user-info-box'>
+                <div onClick={()=> openModal(user)}>
                   {
                     online(user) && <div className='online-dot'></div>
                   }
@@ -28,8 +49,8 @@ export const Users = ({users, onlineUsers, setModal, setUser}) => {
                     <span>{user?.firstname} {user?.lastname}</span>
                     <span className='status' style={{color: online(user) ? '#51e200' : ""}}>{online(user) ? "Online" : "Offline"}</span>
                   </div>
-                  <button className="button">✉</button>
                 </div>
+                <button onClick={()=> createChat(user._id, currentUser._id)} className="button">✉</button>
               </div>
               <hr />
             </div>

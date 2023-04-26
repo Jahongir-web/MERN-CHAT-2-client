@@ -6,8 +6,10 @@ import Logo from "../../img/logo.png"
 
 import "./Search.css"
 import { getAllUser } from '../../api/UserRequests'
+import { useInfoContext } from '../../context/Context'
 
-const Search = ({exit, onlineUsers, currentUser, setModal, setUser}) => {
+const Search = () => {
+  const {exit, currentUser} = useInfoContext()
   const [users, setUsers] = useState([])
   const [findUsers, setFindUsers] = useState(null)
 
@@ -45,7 +47,7 @@ const Search = ({exit, onlineUsers, currentUser, setModal, setUser}) => {
           </div>
         </div>
       </div>
-      <Users users={findUsers ? findUsers : users} onlineUsers={onlineUsers} setModal={setModal} setUser={setUser}/>
+      <Users users={findUsers ? findUsers : users}/>
     </div>
   )
 }

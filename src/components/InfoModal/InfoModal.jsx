@@ -3,8 +3,10 @@ import profileImg from '../../img/defaultProfile.png'
 import coverImg from '../../img/defaultCover.jpg'
 
 import "./InfoModal.css"
+import { useInfoContext } from '../../context/Context'
 
-export const InfoModal = ({user, setModal}) => {
+export const InfoModal = () => {
+  const {user, setModal} = useInfoContext()
   return (
     <div className="info-modal">
       <button className='button close-btn' onClick={()=>setModal(false)}>X</button>

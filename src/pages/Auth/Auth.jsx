@@ -4,8 +4,11 @@ import { logIn, signUp } from '../../api/AuthRequests'
 import Logo from "../../img/logo.png"
 
 import "./Auth.css"
+import { useInfoContext } from '../../context/Context'
 
-export const Auth = (props) => {
+export const Auth = () => {
+  const {setCurrentUser} = useInfoContext()
+
   const initialState = {
     firstname: "",
     lastname: "",
@@ -29,12 +32,10 @@ export const Auth = (props) => {
     try {
       setLoading(true)
       const res = await signUp(data)
-      props.handleLogin(res.data.user);
+      setCurrentUser(res.data.user);
       localStorage.setItem('token', res.data.token)
       localStorage.setItem('profile', JSON.stringify(res.data.user)) 
-      // setUser(res.data.newUser)
-      setLoading(false)
-      // navigate('/home')           
+      setLoading(false)        
     } catch (error) {
       setLoading(false)
       console.log(error.response.data.message);
@@ -45,12 +46,10 @@ export const Auth = (props) => {
     try {
       setLoading(true)
       const res = await logIn(data)
-      props.handleLogin(res.data.user);
+      setCurrentUser(res.data.user);
       localStorage.setItem('token', res.data.token)
-      localStorage.setItem('profile', JSON.stringify(res.data.user))     
-      // setUser(res.data.user)
-      setLoading(false)
-      // navigate('/home')  
+      localStorage.setItem('profile', JSON.stringify(res.data.user))    
+      setLoading(false) 
     } catch (error) {
       setLoading(false)
       console.log(error);

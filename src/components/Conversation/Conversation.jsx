@@ -3,12 +3,15 @@ import profileImg from '../../img/defaultProfile.png'
 import { getUser } from '../../api/UserRequests'
 
 import "./Conversation.css"
+import { useInfoContext } from '../../context/Context'
 
 
-export const Conversation = ({data, currentUser, online}) => {
+export const Conversation = ({data, online}) => {
+  const { currentUser} = useInfoContext()
   const [userData, setUserData] = useState(null)
 
   const userId = data.members.find(id => id!==currentUser._id)
+  
   useEffect(()=> {
     const getUserData = async () => {
       try {

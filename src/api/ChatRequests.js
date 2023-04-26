@@ -14,5 +14,5 @@ export const userChats = () => {
 
 export const findChat = (firstId, secondId) =>{
   const token = localStorage.getItem("token")
-  return API.get(`/chat/find/${firstId}/${secondId}`, {headers: {"Authorization" : `Bearer ${token}`}});
+  return API.get(`/chat/${firstId}/${secondId}`, {headers: {"Authorization" : `Bearer ${token}`}});
 }

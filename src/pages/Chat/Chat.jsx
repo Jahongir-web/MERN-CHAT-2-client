@@ -6,26 +6,16 @@ import { userChats } from '../../api/ChatRequests';
 import { Conversation } from '../../components/Conversation/Conversation';
 import { ChatBox } from '../../components/ChatBox/ChatBox';
 import { InfoModal } from '../../components/InfoModal/InfoModal';
+import { useInfoContext } from '../../context/Context';
 
 const socket = io.connect('http://localhost:4001/');
 
 
-export const Chat = ({currentUser, setCurrentUser}) => {
-
-  const [onlineUsers, setOnlineUsers] = useState([])
-  const [chats, setChats] = useState([])
-  const [currentChat, setCurrentChat] = useState(null)
+export const Chat = () => {
+  const {currentUser, chats, setChats, modal, exit, onlineUsers, setOnlineUsers, setCurrentChat} = useInfoContext()  
   const [sendMessage, setSendMessage] = useState(null)
   const [receivedMessage, setReceivedMessage] = useState(null)
-  const [modal, setModal] = useState(false)
-  const [user, setUser] = useState(null)
   
-  const exit = () => {
-    localStorage.clear()
-    setCurrentUser(null)
-    setModal(false)
-  }
-
   // Get the chat in the sections
   useEffect(()=> {
     const getChats = async () => {
@@ -74,10 +64,10 @@ export const Chat = ({currentUser, setCurrentUser}) => {
   return (
     <div className='Chat'>
       <div className="left-side">
-        <Search exit={exit} onlineUsers={onlineUsers} currentUser={currentUser} setModal={setModal} setUser={setUser}/>
+        <Search />
       </div>
       <div className="middle-box">        
-        <ChatBox chat={currentChat} currentUser={currentUser} setSendMessage={setSendMessage} receivedMessage={receivedMessage} exit={exit} setModal={setModal} setUser={setUser}/>
+        <ChatBox setSendMessage={setSendMessage} receivedMessage={receivedMessage}/>
       </div>
       <div className="right-side">
         <div className="right-side-top">
@@ -89,7 +79,7 @@ export const Chat = ({currentUser, setCurrentUser}) => {
             chats.map((chat, i) => {
               return(
                 <div key={chat._id} onClick={()=>setCurrentChat(chat)}>
-                  <Conversation data={chat} currentUser={currentUser} online={checkOlineStatus(chat)} />
+                  <Conversation data={chat} online={checkOlineStatus(chat)} />
                 </div>
               )
             })
@@ -98,7 +88,7 @@ export const Chat = ({currentUser, setCurrentUser}) => {
       </div>
 
       {
-        modal && <InfoModal user={user} setModal={setModal}/>      
+        modal && <InfoModal/>      
       }
     </div>
 
