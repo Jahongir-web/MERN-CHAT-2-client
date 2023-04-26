@@ -72,7 +72,7 @@ export const Chat = () => {
       <div className="right-side">
         <div className="right-side-top">
           <h2>List Chats</h2>
-          <button className='info-btn button' onClick={exit}>Exit</button>
+          <button className='exit-btn' onClick={exit}></button>
         </div>
         <div className="chat-list">
           {

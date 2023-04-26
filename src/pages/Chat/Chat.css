@@ -6,21 +6,27 @@
 }
 
 .left-side {
-  width: 25%;
+  max-width: 280px;
+  width: 100%;
   padding: 10px 20px;
+  box-shadow: 0 0 15px -5px rgb(187, 187, 228);
 }
 
+
 .middle-box {
-  width: 50%;
-  border: 2px dashed blue;
+  width: 100%;
+  /* border: 2px solid rgb(153, 153, 241); */
+  box-shadow: 0 0 15px -5px rgb(187, 187, 228);
   border-top: 0;
   border-bottom: 0;
   padding: 10px 20px;
 }
 
 .right-side {
-  width: 25%;
+  max-width: 280px;
+  width: 100%;
   padding: 10px 20px;
+  box-shadow: 0 0 15px -5px rgb(187, 187, 228);
 }
 
 .right-side-top {
@@ -29,8 +35,19 @@
   justify-content: space-between;
 }
 
-.right-side-top button {
+.exit-btn {
+  background-color: rgb(243, 116, 116);
+  border: 0;
+  width: 30px;
+  height: 30px;
   align-self: flex-start;
+  background-image: url(../../img/logout.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 25px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 5px;
 }
 
 .right-side-top h2 {

@@ -16,6 +16,7 @@ export const InfoProvider = ({children}) => {
   const exit = () => {
     localStorage.clear()
     setCurrentUser(null)
+    setCurrentChat(null)
     setModal(false)
   }
 

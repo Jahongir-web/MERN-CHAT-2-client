@@ -37,7 +37,7 @@ const Search = () => {
   }
 
   return (
-    <div>
+    <div className='search-users'>
       <div className='search-box'>
         <img src={Logo} alt="logo" />
         <div className="search-input-box">
@@ -46,7 +46,9 @@ const Search = () => {
             <UilSearch/>
           </div>
         </div>
+        <button className="open-list-btn">X</button>
       </div>
+      <h4>All Users</h4>
       <Users users={findUsers ? findUsers : users}/>
     </div>
   )

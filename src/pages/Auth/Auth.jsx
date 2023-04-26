@@ -39,6 +39,7 @@ export const Auth = () => {
     } catch (error) {
       setLoading(false)
       console.log(error.response.data.message);
+      alert(error.response.data.message)
     }
   }
   //login

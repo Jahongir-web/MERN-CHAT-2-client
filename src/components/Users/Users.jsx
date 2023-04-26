@@ -33,8 +33,7 @@ export const Users = ({users}) => {
   }
 
   return (
-    <div>
-      <h1>All Users</h1>
+    <div className='users-list'>
       {
         users.map((user) => {
           return (
@@ -50,7 +49,7 @@ export const Users = ({users}) => {
                     <span className='status' style={{color: online(user) ? '#51e200' : ""}}>{online(user) ? "Online" : "Offline"}</span>
                   </div>
                 </div>
-                <button onClick={()=> createChat(user._id, currentUser._id)} className="button">✉</button>
+                <button onClick={()=> createChat(user._id, currentUser._id)} className="button"> </button>
               </div>
               <hr />
             </div>
