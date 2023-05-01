@@ -18,6 +18,15 @@
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 5px;
+}
+
+.user-info > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 20px;
   cursor: pointer;
 }
@@ -26,6 +35,10 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+
+.chat-menu-btn {
+  padding: 5px;
 }
 
 .chat-body {

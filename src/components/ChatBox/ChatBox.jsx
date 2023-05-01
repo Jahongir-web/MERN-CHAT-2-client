@@ -5,6 +5,7 @@ import {format} from "timeago.js"
 import InputEmoji from "react-input-emoji"
 import profileImg from '../../img/defaultProfile.png'
 import { useInfoContext } from '../../context/Context'
+import { UilEllipsisV } from '@iconscout/react-unicons'
 
 import "./ChatBox.css"
 
@@ -114,13 +115,14 @@ export const ChatBox = ({setSendMessage, receivedMessage}) => {
           <>
             {/* chat header */}
             <div className="chat-header">
-              <div onClick={openModal} className="user-info">
-                <div>
+              <div className="user-info">
+                <div onClick={openModal} >
                   <img src={userData?.profilePicture ? userData.profilePicture : profileImg} alt="profile" className="user-image"/>
+                  <div className="name">
+                    <span>{userData?.firstname} {userData?.lastname}</span>
+                  </div>
                 </div>
-                <div className="name">
-                  <span>{userData?.firstname} {userData?.lastname}</span>
-                </div>
+                <button className='chat-menu-btn button'><UilEllipsisV /></button>
               </div>
               <hr/>
             </div>

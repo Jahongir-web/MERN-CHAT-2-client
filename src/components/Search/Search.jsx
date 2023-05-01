@@ -1,5 +1,7 @@
 import React, { memo, useEffect, useState } from 'react'
 import {UilSearch} from "@iconscout/react-unicons"
+import { UilTimes } from '@iconscout/react-unicons'
+import { UilListUiAlt } from '@iconscout/react-unicons'
 import { Users } from '../Users/Users'
 import Logo from "../../img/logo.png"
 
@@ -46,7 +48,7 @@ const Search = () => {
             <UilSearch/>
           </div>
         </div>
-        <button className="open-list-btn">X</button>
+        <button className="open-list-btn button"><UilTimes /></button>
       </div>
       <h4>All Users</h4>
       <Users users={findUsers ? findUsers : users}/>
